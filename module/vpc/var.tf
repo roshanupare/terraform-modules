@@ -7,8 +7,13 @@ variable "instance_tenancy" {
     type = string
 }
 
-variable "tags" {
-    type = map
+variable "env" {
+    type = string
+  
+}
+
+variable "project" {
+    type = string
   
 }
 
