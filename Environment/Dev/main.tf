@@ -7,7 +7,7 @@ provider "aws" {
 
 module "s3-bucket" {
     source = "../../module/s3/"
-    bucket_name = ["shubham-s3", "ganesh-s3", "vishal-s3", "shankar-s3"]
+    bucket_name = ["bucket-1", "bucket-2", "bucket-3", "bucket-4"]
     tag = {
         name = "Dev-bucket"
         env = "Dev"
@@ -18,7 +18,7 @@ module "s3-bucket" {
 
 module "iam-user" {
     source = "../../module/iam-user/"
-    users_name = ["shankar", "sahil", "ganesh", "harshit", "shubham", "vaibhav", "rupa", "vicky", "aafreen", "roshan"]
+    users_name = ["user-1", "user-2", "user-3", "user-4", "user-5", "user-6", "user-7", "user-8", "user-9", "user-10"]
     env = "Dev"
   
 }
