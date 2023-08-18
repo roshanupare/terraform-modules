@@ -31,7 +31,7 @@ module "instance" {
         prod = "t2.medium"
     }
     tag = "Dev"
-    instance_count = "5"
+    instance_count = "1"
   
 }
 
@@ -41,11 +41,25 @@ module "vpc" {
     instance_tenancy = "default"
     project = "maaax"
     env = "dev"
-    private_subnet_availability_zone = "ap-northeast-2a"
     private_subnet_cidr_block = ["10.0.0.0/19", "10.0.32.0/19", "10.0.64.0/19", "10.0.96.0/19"]
     map_public_ip_on_launch = "false"
-    public_subnet_availability_zone = "ap-northeast-2b"
-    public_subnet_cidr_block = ["10.0.128.0/19"]
+    public_subnet_cidr_block = ["10.0.128.0/19", "10.0.160.0/19"]
     public_ip_on_launch = "true"
+  
+}
+
+module "alb" {
+    source = "../../module/loadbalancer"
+    internal = true
+    load_balancer_type = "application"
+    subnet_id = module.vpc.public_subnet_id
+    protocol = "HTTP"
+    port = "80"
+    target_group_name = "alb-target-group"
+    vpc_id = module.vpc.vpc_id
+    sg_name = "alb-sg"
+    project = "maaax"
+    env = "dev"
+    instance_id = module.instance.instance_id
   
 }

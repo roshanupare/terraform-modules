@@ -22,10 +22,7 @@ variable "private_subnet_cidr_block" {
   
 }
 
-variable "private_subnet_availability_zone" {
-    type = string
-  
-}
+
 
 variable "map_public_ip_on_launch" {
     type = bool
@@ -34,11 +31,6 @@ variable "map_public_ip_on_launch" {
 
 variable "public_subnet_cidr_block" {
     type = list(string)
-  
-}
-
-variable "public_subnet_availability_zone" {
-    type = string
   
 }
 
